@@ -1,0 +1,55 @@
+<div class="grid state-elections">
+  <div class="unit whole">
+    <div class="grid">
+      <div class="content-header unit whole">
+        <div class="grid">
+          <div class="unit four-fifths"><div class="title">{{StateName}}</div></div>
+          <div class="unit one-fifth"><div style="padding-top:40px"><a href="/{{stateId}}/election" class="link-button">+ election</a></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid">
+    </div>
+    {{#if elections}}
+    <table>
+      <thead>
+        <th width="100%">Election</th>
+        <th>Manage</th>
+      </thead>
+      <tbody>
+    {{#each elections}}
+        <tr>
+          <td>{{ElectionName}}</td>
+          <td><a href="/{{../stateId}}/election/{{ElectionId}}">edit</a>&nbsp;<a href="/{{../stateId}}/election/{{ElectionId}}" class="delete" data-election="{{ElectionId}}" data-electionname="{{ElectionName}}">delete</a></td>
+        </tr>
+    {{/each}}
+      </tbody>
+    </table>
+    {{else}}
+    <h5>No elections for this state</h5>
+    {{/if}}
+  </div>
+</div>
+<script>
+$(function(){
+  $(".delete").click(function(event){
+    event.preventDefault();
+    var e = $(this).data("election"),
+            eName = $(this).data("electionname"),
+            url = "/{{stateId}}/election/"+e;
+      var doDelete = confirm("Are you sure you want to delete the election:\n" + eName);
+      if(doDelete == true) {
+          $.ajax({
+              url:url,
+              method:"delete",
+              success: function () {
+                  window.location.reload();
+              },
+              error: function () {
+                  window.location.reload();
+              }
+          });
+      }
+  });
+});
+</script>

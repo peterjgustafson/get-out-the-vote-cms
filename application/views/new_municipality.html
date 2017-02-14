@@ -1,0 +1,113 @@
+<div class="grid state-details">
+  <div class="unit whole">
+    <div class="grid">
+      <div class="content-header unit whole">
+        <div class="grid">
+          <div class="unit four-fifths"><div class="title">State: {{StateFull}} - new Municipality</div></div>
+          <div class="unit one-fifth"></div>
+        </div>
+      </div>
+    </div>
+    <form method="post" action="/{{State}}/county/{{CountyId}}/municipality">
+      <div class="grid">
+        <div class="unit whole">
+          <label>Clerk Information</label>
+        </div>
+      </div>
+      <fieldset>
+        <legend>Absentee Ballot</legend>
+        <div class="grid">
+          <div class="unit whole">
+            <label>Municipality Name</label><br />
+            <input class="election-input" type="text" value="{{clean MunicipalityName}}" name="MunicipalityName" />
+          </div>
+        </div>
+        <div class="grid">
+          <div class="unit whole">
+            <label>Official Office Name</label><br />
+            <input class="election-input" type="text" value="{{clean OfficialOfficeName}}" name="OfficialOfficeName" />
+          </div>
+        </div>
+        <div class="grid">
+          <div class="unit half">
+            <label>Phone</label><br />
+            <input class="election-input" type="text" value="{{Phone}}" name="Phone" />
+          </div>
+          <div class="unit half">
+            <label>Fax</label><br />
+            <input class="election-input" type="text" value="{{Fax}}" name="Fax" />
+          </div>
+        </div>
+        <div class="grid">
+          <div class="unit whole">
+            <label>Clerk Full Name</label><br />
+            <input class="election-input" type="text" value="{{clean ClerkFullName}}" name="ClerkFullName" />
+          </div>
+        </div>
+        <div class="grid">
+          <div class="unit whole">
+            <label>Address</label><br />
+            <input class="election-input" type="text" value="{{clean ClerkAddress1}}" name="Address1" /><br />
+            <input class="election-input" type="text" value="{{clean ClerkAddress2}}" name="Address2" />
+          </div>
+        </div>
+        <div class="grid">
+          <div class="unit half">
+            <label>City</label><br />
+            <input class="election-input" type="text" value="{{clean ClerkCity}}" name="City" />
+          </div>
+          <div class="unit one-quarter">
+            <label>State</label><br />
+            <select class="election-input" name="State"><option>{{State}}</option></select>
+          </div>
+          <div class="unit one-quarter">
+            <label>Zip Code</label><br />
+            <input class="election-input" type="text" value="{{ClerkZip}}" name="ZipCode" />
+          </div>
+        </div>
+        <div class="grid">
+          <div class="unit whole">
+            <label>Clerk Email Address</label><br />
+            <input class="election-input" type="text" value="{{ClerkEmailAddress}}" name="EmailAddress" />
+          </div>
+        </div>
+      </fieldset>
+      <br />
+      <fieldset>
+        <legend>Voter Registration</legend>
+        <div class="grid">
+          <div class="unit whole">
+            <label>Address</label><br />
+            <input class="election-input" type="text" value="{{clean RegAddress1}}" name="RegAddress1" /><br />
+            <input class="election-input" type="text" value="{{clean RegAddress2}}" name="RegAddress2" />
+          </div>
+        </div>
+        <div class="grid">
+          <div class="unit half">
+            <label>City</label><br />
+            <input class="election-input" type="text" value="{{clean RegCity}}" name="RegCity" />
+          </div>
+          <div class="unit one-quarter">
+            <label>State</label><br />
+            <select class="election-input" name="State"><option>{{State}}</option></select>
+          </div>
+          <div class="unit one-quarter">
+            <label>Zip Code</label><br />
+            <input class="election-input" type="text" value="{{RegZip}}" name="RegZip" />
+          </div>
+        </div>
+        <div class="grid">
+          <div class="unit whole">
+            <label>Clerk Email Address</label><br />
+            <input class="election-input" type="text" value="{{RegEmailAddress}}" name="RegEmailAddress" />
+          </div>
+        </div>
+      </fieldset>
+      <div class="grid">
+        <div class="unit whole">
+          <button type="submit">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

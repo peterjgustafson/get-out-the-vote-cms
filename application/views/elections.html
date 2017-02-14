@@ -1,0 +1,56 @@
+<div class="grid elections">
+  <div class="unit whole">
+    <div class="grid">
+      <div class="content-header unit whole">
+        <div class="grid">
+          <div class="unit four-fifths"><div class="title">Elections</div></div>
+          <div class="unit one-fifth"></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="unit whole">
+        {{#if elections}}
+        <table>
+          <thead>
+            <th>State</th>
+            <th>Election</th>
+            <th>Manage</th>
+          </thead>
+          <tbody>
+        {{#each elections}}
+            <tr>
+              <td>{{State}}</td>
+              <td>{{clean ElectionName}}</td>
+              <td>
+                <a href="/elections/{{State}}/election/{{ElectionId}}">edit</a>
+                <a href="/elections/{{State}}/election/{{ElectionId}}" class="delete" data-election="{{ElectionId}}">delete</a>
+              </td>
+            </tr>
+        {{/each}}
+          </tbody>
+        </table>
+        {{else}}
+        <h5>No elections for this state</h5>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$(function(){
+  $(".delete").click(function(){
+    alert(this.data("election"));
+  });
+});
+function confirmElectionDelete(electionName) {
+
+    var doDelete = confirm("Are you sure you want to delete the election: " + electionName);
+    if (doDelete ) {
+
+    }
+    else {
+
+    }
+}
+</script>

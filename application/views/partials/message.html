@@ -1,0 +1,9 @@
+{{#if message}}
+<script>
+  $(function(){
+    {{#message}}
+    var n = noty({text:"{{message}}", type:"{{type}}"});
+    {{/message}}
+  });
+</script>
+{{/if}}

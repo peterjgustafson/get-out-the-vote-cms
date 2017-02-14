@@ -1,0 +1,32 @@
+{
+  "name": "targeted-victory-gotv-cms",
+  "description": "CMS for Targeted Victory Get Out the Vote",
+  "author": "Peter Gustafson <pgustafson@targetedvictory.com>",
+  "version": "1.19.35",
+  "scripts": {
+    "start": "export NODE_ENV=prod; node app",
+    "start-dev": "export NODE_ENV=dev; npm run-script run-app",
+    "start-demo": "export NODE_ENV=demo; npm run-script run-app",
+    "start-production": "export NODE_ENV=prod; node app",
+    "start-prodlog": "export NODE_ENV=prod-logging; node app",
+    "update-css": "sass -t compressed sass/application.scss static/stylesheets/application.css",
+    "run-app": "sass -t compressed sass/application.scss static/stylesheets/application.css && node app"
+  },
+  "dependencies": {
+    "express": "3.5.1",
+    "handlebars": "*",
+    "consolidate": "*",
+    "request": "*",
+    "winston": "*",
+    "moment": "*",
+    "fast-csv": "*",
+    "passport": "*",
+    "passport-local": "*",
+    "pixel-ping": "^0.1.3",
+    "newrelic": "^1.13.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*"
+  }
+}

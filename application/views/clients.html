@@ -1,0 +1,30 @@
+<div class="grid states">
+  <div class="unit whole">
+    <div class="grid">
+      <div class="content-header unit whole">
+        <div class="grid">
+          <div class="unit four-fifths"><div class="title">Clients</div></div>
+          <div class="unit one-fifth"></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="unit whole">
+        <table>
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Name</th>
+              <th>Manage</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#clients}}
+            <tr><td>{{ClientCode}}</td><td>{{ClientName}}</td><td><a href="/client/{{ClientId}}">edit</a></td></tr>
+            {{/clients}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

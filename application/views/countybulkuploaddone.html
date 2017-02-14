@@ -1,0 +1,40 @@
+<div class="grid">
+  <div class="unit whole">
+    <div class="grid">
+      <div class="content-header unit whole">
+        <div class="grid">
+          <div class="unit four-fifths"><div class="title">Bulk county update complete</div></div>
+          <div class="unit one-fifth"><div style="padding-top:40px"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="grid">
+  <div class="unit whole">
+    <h3>Counties parsed: {{counties_parsed}}</h3>
+    <h3>Success: {{successes}}</h3>
+    <h3>Errors: {{errors}}</h3>
+    {{#if error_objs}}
+    <div class="grid">
+      <div class="unit whole">
+        <table>
+          <thead>
+            <tr>
+              <th>County</th>
+              <th>Error</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#error_objs}}
+              <tr>
+                <td>{{County.CountyName}}</td><td>{{County.Error}}</td>
+              </tr>
+            {{/error_objs}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {{/if}}
+  </div>
+</div>

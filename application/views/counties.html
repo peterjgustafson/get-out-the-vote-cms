@@ -1,0 +1,31 @@
+<div class="grid states">
+  <div class="unit whole">
+    <div class="grid">
+      <div class="content-header unit whole">
+        <div class="grid">
+          <div class="unit four-fifths"><div class="title">{{stateId}} Counties</div></div>
+          <div class="unit one-fifth"><div style="padding-top:40px"><a href="/{{stateId}}/counties/update" class="link-button" enabled="false">bulk update</a></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="unit whole">
+        <table>
+          <thead>
+            <tr>
+              <th>State</th>
+              <th>Abbr.</th>
+              <th>County</th>
+              <th>Manage</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#counties}}
+            <tr><td>{{StateFull}}</td><td>{{State}}</td><td>{{clean CountyName}}</td><td><a href="/{{State}}/county/{{CountyId}}">edit</a></td></tr>
+            {{/counties}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

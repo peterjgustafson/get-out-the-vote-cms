@@ -1,0 +1,20 @@
+<div class="grid">
+  <div class="unit whole">
+    <div class="grid">
+      <div class="content-header unit whole">
+        <div class="grid">
+          <div class="unit four-fifths"><div class="title">Bulk county update</div></div>
+          <div class="unit one-fifth"><div style="padding-top:40px"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="grid">
+  <div class="unit whole">
+    <form method="post" action="/{{stateId}}/counties/update" enctype="multipart/form-data">
+      <label>Counties CSV: </label><input type="file" name="counties" /><br /><br />
+      <button type="submit">Process</button>
+    </form>
+  </div>
+</div>

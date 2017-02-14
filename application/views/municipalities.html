@@ -1,0 +1,36 @@
+<div class="grid municipalities">
+  <div class="unit whole">
+    <div class="grid">
+      <div class="content-header unit whole">
+        <div class="grid">
+          <div class="unit half"><div class="title">Municipalities</div></div>
+          <div class="unit half align-right"><div style="padding-top:40px"><a href="/{{stateId}}/county/{{countyId}}/municipalities/upload" class="link-button">bulk upload</a><a href="/{{stateId}}/county/{{countyId}}/municipality" class="link-button">+ municipality</a></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="unit whole">
+        <table>
+          <thead>
+            <tr>
+              <th>State</th>
+              <th>County</th>
+              <th>Municipality</th>
+              <th>Manage</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#municipalities}}
+            <tr>
+              <td>{{StateFull}}</td>
+              <td>{{clean CountyName}}</td>
+              <td>{{clean MunicipalityName}}</td>
+              <td><a href="/{{State}}/county/{{CountyId}}/municipality/{{MunicipalityId}}">edit</a></td>
+            </tr>
+            {{/municipalities}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

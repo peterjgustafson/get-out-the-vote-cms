@@ -1,0 +1,106 @@
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0px;
+  font-family: arial, sans-serif;
+}
+#container {
+  height: 100%;
+  background: #f0f0f0;
+}
+.content-header {
+  position: relative;
+  height: 120px;
+  border-bottom: 2px solid #222;
+  margin-bottom: 25px;
+}
+.content-header .title {
+  font-size: 26px;
+  padding-top: 50px;
+}
+
+#menu {
+  background: #fff;
+  div {
+    &.menu-item {
+      border-bottom: 1px solid #222;
+      margin-bottom: 12px;
+      height: 120px;
+      
+      a {
+        img {
+          height: 110px;
+        }
+      }
+    }
+  }
+  ul {
+    li {
+      list-style-type: none;
+    }
+  }
+}
+
+#content {
+  background: #f0f0f0;
+
+  table {
+    width: 100%;
+    padding: 0px 25px;
+    border-collapse: collapse;
+    th {
+      text-align: left;
+      background: #959595;
+      color: #fff;
+      padding: 4px 8px;
+    }
+    td {
+      border: 1px solid #d0d0d0;
+      padding: 4px 8px;
+    }
+  }
+}
+
+form {
+  .election-input {
+    padding: 4px 8px;
+    border: 1px solid #c0c0c0;
+    font-size: 18px;
+    width: 80%;
+  }
+  
+  label {
+    padding-left: 8px;
+    font-size: 14px;
+  }
+  
+  .form-section {
+    background: #fff;
+    padding: 8px !important;
+    margin-bottom: 25px;
+  }
+  
+  textarea {
+    height: 300px;
+  }
+  
+  input {
+    .error {
+      border: 1px solid #f00;
+      color: #f00;
+    }
+  }
+}
+
+fieldset {
+  border: 1px solid #a5a5a5;
+  border-radius: 8px;
+}
+
+
+@media screen and (min-width: 569px) {
+  #menu {
+    height: 100%;
+  }
+}

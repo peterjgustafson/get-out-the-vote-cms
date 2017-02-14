@@ -1,0 +1,146 @@
+{{#client}}
+<div class="grid location">
+  <div class="unit whole">
+    <div class="grid">
+      <div class="content-header unit whole">
+        <div class="grid">
+          <div class="unit four-fifths"><div class="title">Client: {{ClientName}}</div></div>
+          <div class="unit one-fifth"><div style="padding-top:40px"><a href="/voters/{{ClientId}}" class="voter-file link-button">Get Voter File</a></div></div>
+        </div>
+      </div>
+    </div>
+    <form method="post" action="/client/{{ClientId}}">
+      <div class="grid">
+        <div class="unit whole form-section">
+          <div class="grid">
+            <div class="unit whole">
+              <label>Client Name</label><br />
+              <input class="election-input" type="text" name="ClientName" value="{{clean ClientName}}" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Client Code</label><br />
+              <input class="election-input" type="text" name="ClientCode" value="{{ClientCode}}" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit half">
+              <label>Sender's Name</label><br />
+              <input class="election-input" type="text" name="SendersName" value="{{clean SendersName}}" />
+            </div>
+            <div class="unit half">
+              <label>Sender's Email Address</label><br />
+              <input class="election-input" type="text" name="SendersEmailAddress" value="{{SendersEmailAddress}}" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Client Email Header</label><br />
+              <input class="election-input" type="text" name="ClientEmailHeader" value="{{ClientEmailHeader}}"/>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Available Email Parameters</label><br />
+              <label>{State}, {firstName}, {bullets}, {mailingAddress}, {abDeadline}, {electionDate}, {signature}, {lookupURL}, {linkToForm}</label>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Client Email Footer (Paid for By)</label><br />
+              <textarea class="election-input" type="text" name="ClientEmailFooter">{{ClientEmailFooter}}</textarea>
+            </div>
+          </div>
+          <br /><br />
+          <div class="grid">
+            <div class="unit whole">
+              <label>Absentee Ballot Email Body</label><br />
+              <textarea class="election-input" type="text" name="ClientABEmailCopy">{{ClientABEmailCopy}}</textarea>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Florida Absentee Ballot Email Notification Message</label><br />
+              <textarea class="election-input" type="text" name="ClientABEmail_ForEmailProcess">{{ClientABEmail_ForEmailProcess}}</textarea>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Early Voting Location Email Body</label><br />
+              <textarea class="election-input" type="text" name="ClientVotingLocEmailCopy">{{ClientVotingLocEmailCopy}}</textarea>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Registration Email Body</label><br />
+              <textarea class="election-input" type="text" name="ClientRegEmailCopy">{{ClientRegEmailCopy}}</textarea>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Election Day Email Body</label><br />
+              <textarea class="election-input" type="text" name="EDayLocationEmail">{{EDayLocationEmail}}</textarea>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Commit Email Body</label><br />
+              <textarea class="election-input" type="text" name="CommitEmailCopy">{{CommitEmailCopy}}</textarea>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Postmark API Key</label><br />
+              <input class="election-input" type="text" name="PostmarkAPIKey" value="{{PostmarkAPIKey}}" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <table>
+                <thead>
+                  <th>Domains</th>
+                  <th></th>
+                </thead>
+                <tbody>
+                  {{#if domains}}
+                  {{#domains}}
+                  <tr>
+                    <td>{{DomainName}}</td>
+                    <td><a href="#" class="delete-domain" data-url="{{../ClientId}}/{{DomainName}}">delete</a></td>
+                  </tr>
+                  {{/domains}}
+                  {{else}}
+                  <tr><td>No domains for this client.</td></tr>
+                  {{/if}}
+                </tbody>
+              </table><button class="new-domain">+ domain</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div><button type="submit">Save</button></div>
+    </form>
+  </div>
+</div>
+
+<div id="dialog-form" title="Add new domain">
+  <form>
+    <label>Domain</label>
+    <input type="text" id="domain" name="domain" />
+    <input type="hidden" id="clientId" name="clientId" value="{{ClientId}}" />
+  </form>
+</div>
+
+<script>
+  $(function(){
+    $(".voter-file").on("click", function(e) {
+      e.preventDefault();
+      $.get("/voters/{{ClientId}}").done(function(resp){
+        window.location = resp;
+      });
+    });
+  });
+</script>
+
+{{/client}}

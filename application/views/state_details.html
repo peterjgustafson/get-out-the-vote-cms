@@ -1,0 +1,235 @@
+{{#state}}
+<div class="grid state-details">
+  <div class="unit whole">
+    <div class="grid">
+      <div class="content-header unit whole">
+        <div class="grid">
+          <div class="unit four-fifths"><div class="title">{{StateFull}}: State Details</div></div>
+          <div class="unit one-fifth"><div style="padding-top:40px"><a href="/{{State}}/voters" class="link-button">Get Voter File</a></div></div>
+        </div>
+      </div>
+    </div>
+    <form method="post" action="/{{State}}">
+      <div class="grid">
+        <div class="unit golden-small">
+          <label>Early Vote: Locations</label>
+        </div>
+        <div class="unit golden-large">
+          <input type="checkbox" name="HasEarlyVote" {{#if HasEarlyVote}}checked{{/if}} />
+        </div>
+      </div>
+      <div class="grid">
+        <div class="unit golden-small">
+          <label>Absentee: Use County Mailing Address</label>
+        </div>
+        <div class="unit golden-large">
+          <input type="checkbox" name="ABUseCountyClerkContactInfo" {{#if ABUseCountyClerkContactInfo}}checked{{/if}} />
+        </div>
+      </div>
+      <div class="grid">
+        <div class="unit golden-small">
+          <label>Absentee: Request Ballot Via Email</label>
+        </div>
+        <div class="unit golden-large">
+          <input type="checkbox" name="ABUseEmailProcess" {{#if ABUseEmailProcess}}checked{{/if}} />
+        </div>
+      </div>
+      <fieldset class="absentee">
+        <legend>Absentee Ballot</legend>
+        <div class="grid absentee address">
+          <div class="unit whole">
+            <lable>Office Name</lable><br />
+            <input class="election-input" type="text" value="{{clean ABOfficeName}}" name="ABOfficeName" />
+          </div>
+        </div>
+        <div class="grid absentee address">
+          <div class="unit whole">
+            <label>Address</label><br />
+            <input class="election-input" type="text" value="{{clean Address1}}" name="Address1" /><br />
+            <input class="election-input" type="text" value="{{clean Address2}}" name="Address2" />
+          </div>
+        </div>
+        <div class="grid absentee address">
+          <div class="unit half">
+            <label>City</label><br />
+            <input class="election-input" type="text" value="{{clean City}}" name="City" />
+          </div>
+          <div class="unit one-quarter">
+            <label>State</label><br />
+            <select class="election-input" name="ClerkState"><option>{{State}}</option></select>
+          </div>
+          <div class="unit one-quarter">
+            <label>Zip Code</label><br />
+            <input class="election-input" type="text" value="{{Zip}}" name="Zip" />
+          </div>
+        </div>
+        <div class="grid absentee email">
+          <div class="unit whole">
+            <label>Email Address</label><br />
+            <input class="election-input" type="text" value="{{EmailAddress}}" name="EmailAddress" />
+          </div>
+        </div>
+      </fieldset>
+      <br />
+      <div class="grid">
+        <div class="unit golden-small">
+          <label>Voter Registration: Use County Mailing Address</label>
+        </div>
+        <div class="unit golden-large">
+          <input type="checkbox" name="RegUseCountyClerkContactInfo" {{#if RegUseCountyClerkContactInfo}}checked{{/if}} />
+        </div>
+      </div>
+      <!--div class="grid">
+        <div class="unit golden-small">
+          <label>Registration Use Email Process:</label>
+        </div>
+        <div class="unit golden-large">
+          <input type="checkbox" name="RegUseEmailProcess" {{#if RegUseEmailProcess}}checked{{/if}} />
+        </div>
+      </div-->
+      <fieldset class="registration">
+        <legend>Voter Registration</legend>
+        <div class="gird registration">
+          <div class="unit whole">
+            <label>Same as Absentee</label>
+            <input type="checkbox" name="SameAsAbsentee" />
+          </div>
+        </div>
+        <div class="grid registration address">
+          <div class="unit whole">
+            <label>Office Name</label><br />
+            <input class="election-input" type="text" value="{{clean RegOfficeName}}" name="RegOfficeName" />
+          </div>
+        </div>
+        <div class="grid registration address">
+          <div class="unit whole">
+            <label>Address</label><br />
+            <input class="election-input" type="text" value="{{clean RegAddress1}}" name="RegAddress1" /><br />
+            <input class="election-input" type="text" value="{{clean RegAddress2}}" name="RegAddress2" />
+          </div>
+        </div>
+        <div class="grid registration address">
+          <div class="unit half">
+            <label>City</label><br />
+            <input class="election-input" type="text" value="{{clean RegCity}}" name="RegCity" />
+          </div>
+          <div class="unit one-quarter">
+            <label>State</label><br />
+            <select class="election-input" name="RegState"><option>{{State}}</option></select>
+          </div>
+          <div class="unit one-quarter">
+            <label>Zip Code</label><br />
+            <input class="election-input" type="text" value="{{RegZip}}" name="RegZip" />
+          </div>
+        </div>
+        <div class="grid registration email">
+          <div class="unit whole">
+            <label>Email Address</label><br />
+            <input class="election-input" type="text" value="{{RegEmailAddress}}" name="RegEmailAddress" />
+          </div>
+        </div>
+      </fieldset>
+      <div class="grid">
+        <div class="unit whole">
+          <label>Election Day Website</label><br />
+          <input class="election-input" type="text" value="{{EDWebsite}}" name="EDWebsite" />
+        </div>
+      </div>
+      <div class="grid">
+        <div class="unit whole">
+          <button type="submit">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+$(function(){
+  if ($("input[name=RegUseCountyClerkContactInfo]").is(":checked")) {
+    $(".registration").hide();
+  } else {
+    toggleReg();
+  }
+  if ($("input[name=ABUseCountyClerkContactInfo]").is(":checked")) {
+    $(".absentee").hide();
+  } else {
+    toggleAB();
+  }
+  
+  $("input[name=RegUseCountyClerkContactInfo]").change(function() {
+    if (this.checked) {
+      $(".registration").hide();
+    } else {
+      $(".registration").show();
+      toggleReg();
+    }
+  });
+  $("input[name=ABUseCountyClerkContactInfo]").change(function() {
+    if (this.checked) {
+      $(".absentee").hide();
+    } else {
+      $(".absentee").show();
+      toggleAB();
+    }
+  });
+  $("input[name=RegUseEmailProcess]").change(function() {
+    toggleReg();
+  });
+  $("input[name=ABUseEmailProcess]").change(function() {
+    toggleAB();
+  });
+  
+  function toggleReg() {
+    if ($("input[name=RegUseEmailProcess]").is(":checked")) {
+      $(".registration.address").hide();
+      $(".registration.email").show();
+    } else {
+      $(".registration.email").hide();
+      $(".registration.address").show();
+    }
+  }
+  function toggleAB() {
+    if ($("input[name=ABUseEmailProcess]").is(":checked")) {
+      $(".absentee.address").hide();
+      $(".absentee.email").show();
+    } else {
+      $(".absentee.email").hide();
+      $(".absentee.address").show();
+    }
+  }
+  
+  
+  
+  isMatch();
+  $("input[name=SameAsAbsentee]").change(function(){
+    if (this.checked) {
+      $("input[name=RegOfficeName]").val("{{ABOfficeName}}");
+      $("input[name=RegAddress1]").val("{{Address1}}");
+      $("input[name=RegAddress2]").val("{{Address2}}");
+      $("input[name=RegCity]").val("{{City}}");
+      $("input[name=RegZip]").val("{{Zip}}");
+      $("input[name=RegEmailAddress]").val("{{EmailAddress}}");
+    } else {
+      $("input[name=RegOfficeName]").val("{{RegOfficeName}}");
+      $("input[name=RegAddress1]").val("{{RegAddress1}}");
+      $("input[name=RegAddress2]").val("{{RegAddress2}}");
+      $("input[name=RegCity]").val("{{RegCity}}");
+      $("input[name=RegZip]").val("{{RegZip}}");
+      $("input[name=RegEmailAddress]").val("{{RegEmailAddress}}");
+    }
+  });
+  function isMatch() {
+    if ("{{Address1}}" == "{{RegAddress1}}" &&
+        "{{Address2}}" == "{{RegAddress2}}" &&
+        "{{City}}" == "{{RegCity}}" &&
+        "{{Zip}}" == "{{RegZip}}" &&
+        "{{EmailAddress}}" == "{{RegEmailAddress}}" &&
+        "{{ABOfficeName}}" == "{{RegOfficeName}}") {
+      $("input[name=SameAsAbsentee]").prop("checked",true);
+    } else {
+      $("input[name=SameAsAbsentee]").prop("checked",false);
+    }
+  }
+});
+</script>
+{{/state}}

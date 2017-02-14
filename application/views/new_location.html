@@ -1,0 +1,94 @@
+<div class="grid location">
+  <div class="unit whole">
+    <div class="grid">
+      <div class="content-header unit whole">
+        <div class="grid">
+          <div class="unit four-fifths"><div class="title">Add New Location</div></div>
+          <div class="unit one-fifth"><div style="padding-top:40px"></div></div>
+        </div>
+      </div>
+    </div>
+    <form method="post" action="/{{stateId}}/location">
+      <div class="grid">
+        <div class="unit whole form-section">
+          <div class="grid">
+            <div class="unit three-quarters">
+              <label>Location Name</label><br />
+              <input class="election-input" type="text" name="LocationName" {{#if location}}value="{{clean location.LocationName}}"{{/if}} />
+            </div>
+            <div class="unit one-quarter">
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Address</label><br />
+              <input class="election-input" type="text" name="Address1" {{#if location}}value="{{clean location.Address1}}"{{/if}}/><br />
+              <input class="election-input" type="text" name="Address2" {{#if location}}value="{{clean location.Address2}}"{{/if}}/>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit half">
+              <label>City</label><br />
+              <input class="election-input" type="text" name="City" {{#if location}}value="{{clean location.City}}"{{/if}}/>
+            </div>
+            <div class="unit one-quarter">
+              <label>State</label><br />
+              <select class="election-input" name="State"><option>{{stateId}}</option></select>
+            </div>
+            <div class="unit one-quarter">
+              <label>Zip Code</label><br />
+              <input class="election-input" type="text" name="ZipCode" {{#if location}}value="{{location.ZipCode}}"{{/if}}/>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit half">
+              <label>County</label><br />
+              <input class="election-input" type="text" name="County" {{#if location}}value="{{location.County}}"{{/if}}/>
+            </div>
+            <div class="unit half">
+              <label>Phone Number</label><br />
+              <input class="election-input" type="text" name="Phone" {{#if location}}value="{{location.Phone}}"{{/if}}/>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Website</label>
+              <input class="election-input" type="text" name="Website" {{#if location}}value="{{location.Website}}"{{/if}}/>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Hours of Operation</label><br />
+              <textarea class="election-input" name="HoursOfOperation1">{{#if location}}{{clean HoursOfOperation1}}{{/if}}</textarea>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Hours of Operation</label><br />
+              <input class="election-input" type="text" {{#if location}}value="{{clean HoursOfOperation2}}"{{/if}} name="HoursOfOperation2" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Hours of Operation</label><br />
+              <input class="election-input" type="text" {{#if location}}value="{{clean HoursOfOperation3}}"{{/if}} name="HoursOfOperation3" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Hours of Operation</label><br />
+              <input class="election-input" type="text" {{#if location}}value="{{clean HoursOfOperation4}}"{{/if}} name="HoursOfOperation4" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Hours of Operation</label><br />
+              <input class="election-input" type="text" {{#if location}}value="{{clean HoursOfOperation5}}"{{/if}} name="HoursOfOperation5" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div><button type="submit">Save</button></div>
+    </form>
+  </div>
+</div>

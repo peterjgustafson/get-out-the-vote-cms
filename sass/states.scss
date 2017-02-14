@@ -1,0 +1,20 @@
+#content {
+  .states {
+    table {
+      width: 100%;
+      padding: 0px 25px;
+      border-collapse: collapse;
+      
+      th {
+        text-align: left;
+        background: #959595;
+        color: #fff;
+        padding: 4px 8px;
+      }
+      td {
+        border: 1px solid #d0d0d0;
+        padding: 4px 8px;
+      }
+    }
+  }
+}

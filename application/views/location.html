@@ -1,0 +1,160 @@
+{{#location}}
+<div class="grid location">
+  <div class="unit whole">
+    <div class="grid">
+      <div class="content-header unit whole">
+        <div class="grid">
+          <div class="unit four-fifths"><div class="title">Location: {{LocationName}}</div></div>
+          <div class="unit one-fifth"><div style="padding-top:40px"></div></div>
+        </div>
+      </div>
+    </div>
+    <form method="post" action="/{{../stateId}}/location/{{../locationId}}">
+      <input type="hidden" value="{{clean Address1}}" name="PreviousAddress1" />
+      <input type="hidden" value="{{clean Address2}}" name="PreviousAddress2" />
+      <input type="hidden" value="{{clean City}}" name="PreviousCity" />
+      <input type="hidden" value="{{ZipCode}}" name="PreviousZipCode" />
+      <input type="hidden" value="{{Latitude}}" name="Latitude" />
+      <input type="hidden" value="{{Longitude}}" name="Longitude" />
+      <div class="grid">
+        <div class="unit whole form-section">
+          <div class="grid">
+            <div class="unit three-quarters">
+              <label>Location Name</label><br />
+              <input class="election-input" type="text" value="{{clean LocationName}}" name="LocationName" />
+            </div>
+            <div class="unit one-quarter">
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Address</label><br />
+              <input class="election-input" type="text" value="{{clean Address1}}" name="Address1" /><br />
+              <input class="election-input" type="text" value="{{clean Address2}}" name="Address2" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit half">
+              <label>City</label><br />
+              <input class="election-input" type="text" value="{{clean City}}" name="City" />
+            </div>
+            <div class="unit one-quarter">
+              <label>State</label><br />
+              <select class="election-input" name="State"><option>{{State}}</option></select>
+            </div>
+            <div class="unit one-quarter">
+              <label>Zip Code</label><br />
+              <input class="election-input" type="text" value="{{ZipCode}}" name="ZipCode" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit half">
+              <label>County</label><br />
+              <input class="election-input" type="text" value="{{clean County}}" name="County" />
+            </div>
+            <div class="unit half">
+              <label>Phone Number</label><br />
+              <input class="election-input" type="text" value="{{Phone}}" name="Phone" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Website</label><br />
+              <input class="election-input" type="text" value="{{Website}}" name="Website" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Hours of Operation</label><br />
+              <textarea class="election-input" name="HoursOfOperation1">{{clean HoursOfOperation1}}</textarea>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Hours of Operation</label><br />
+              <input class="election-input" type="text" value="{{clean HoursOfOperation2}}" name="HoursOfOperation2" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Hours of Operation</label><br />
+              <input class="election-input" type="text" value="{{clean HoursOfOperation3}}" name="HoursOfOperation3" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Hours of Operation</label><br />
+              <input class="election-input" type="text" value="{{clean HoursOfOperation4}}" name="HoursOfOperation4" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Hours of Operation</label><br />
+              <input class="election-input" type="text" value="{{clean HoursOfOperation5}}" name="HoursOfOperation5" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Default Maps URL</label><br />
+              <h3>{{DefaultMapsURL}}</h3>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>iOS Maps URL</label><br />
+              <h3>{{IOSMapsURL}}</h3>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Map Image 1</label><br />
+              <img src="{{MapImage1}}" width="320" height="320" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Map Image 2</label><br />
+              <img src="{{MapImage2}}" width="320" height="320" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Map Image 3</label><br />
+              <img src="{{MapImage3}}" width="320" height="320" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div><button type="submit">Save</button></div>
+    </form>
+  </div>
+</div>
+<script>
+$(function(){
+  coded = false;
+  google.maps.event.addDomListener(window, 'load', initialize);
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+  }
+  
+  $("form").on("submit", function(event){
+    if (coded) {
+      return;
+    } else {
+      var a = $(this).find("input[name=Address1]").val()+","+$(this).find("input[name=Address2]").val();
+      var b = $(this).find("input[name=City]").val()+",{{State}},"+$(this).find("input[name=ZipCode]").val();
+      geocoder.geocode( { 'address': a+","+b}, function(results, status) {
+        coded=true;
+        var res = JSON.stringify(results);
+        var lat = results[0].geometry.location.lat();
+        var lng = results[0].geometry.location.lng();
+        $("form").find("input[name=Latitude]").val(lat);
+        $("form").find("input[name=Longitude]").val(lng);
+        $("form").submit();
+      });
+      event.preventDefault();
+    }
+  });
+});
+</script>
+{{/location}}

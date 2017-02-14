@@ -1,0 +1,90 @@
+<div class="grid location">
+  <div class="unit whole">
+    <div class="grid">
+      <div class="content-header unit whole">
+        <div class="grid">
+          <div class="unit four-fifths"><div class="title">Client: {{ClientName}}</div></div>
+          <div class="unit one-fifth"><div style="padding-top:40px"></div></div>
+        </div>
+      </div>
+    </div>
+    <form method="post" action="/client/{{ClientId}}">
+      <div class="grid">
+        <div class="unit whole form-section">
+          <div class="grid">
+            <div class="unit whole">
+              <label>Client Name</label><br />
+              <input class="election-input" type="text" name="ClientName" {{#if client}}value="{{clean ClientName}}"{{/if}} />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Client Code</label><br />
+              <input class="election-input" type="text" name="ClientCode" {{#if client}}value="{{ClientCode}}"{{/if}} />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit half">
+              <label>Sender's Name</label><br />
+              <input class="election-input" type="text" name="SendersName" {{#if client}}value="{{SendersName}}"{{/if}} />
+            </div>
+            <div class="unit half">
+              <label>Sender's Email Address</label><br />
+              <input class="election-input" type="text" name="SendersEmailAddress" {{#if client}}value="{{SendersEmailAddress}}"{{/if}} />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Client Email Header</label><br />
+              <input class="election-input" type="text" name="ClientEmailHeader" {{#if client}}value="{{ClientEmailHeader}}"{{/if}}/>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Client Email Footer (Paid for By)</label><br />
+              <input class="election-input" type="text" name="ClientEmailFooter" {{#if client}}value="{{ClientEmailFooter}}"{{/if}}/>
+            </div>
+          </div>
+          <br /><br />
+          <div class="grid">
+            <div class="unit whole">
+              <label>Absentee Ballot Email Body</label><br />
+              <textarea class="election-input" type="text" name="ClientABEmailCopy">{{#if client}}{{ClientABEmailCopy}}{{/if}}</textarea>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Florida Absentee Ballot Email Notification Message</label><br />
+              <textarea class="election-input" type="text" name="ClientABEmail_ForEmailProcess">{{#if client}}{{ClientABEmail_ForEmailProcess}}{{/if}}</textarea>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Early Voting Location Email Body</label><br />
+              <textarea class="election-input" type="text" name="ClientVotingLocEmailCopy">{{#if client}}{{ClientVotingLocEmailCopy}}{{/if}}</textarea>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Registration Email Body</label><br />
+              <textarea class="election-input" type="text" name="ClientRegEmailCopy">{{#if client}}{{ClientRegEmailCopy}}{{/if}}</textarea>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Commit Email Body</label><br />
+              <textarea class="election-input" type="text" name="CommitEmailCopy">{{#if client}}{{CommitEmailCopy}}{{/if}}</textarea>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit whole">
+              <label>Postmark API Key</label><br />
+              <input class="election-input" type="text" name="PostmarkAPIKey" {{#if client}}value="{{PostmarkAPIKey}}"{{/if}} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div><button type="submit">Save</button></div>
+    </form>
+  </div>
+</div>

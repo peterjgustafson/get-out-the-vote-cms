@@ -1,0 +1,41 @@
+<script>
+$(function(){
+  $( "#add-election-dialog" ).dialog({
+    modal: true,
+    autoOpen: false,
+    width: 400,
+    buttons: [
+      {
+        text: "Save",
+        click: function() {
+          $( this ).dialog( "close" );
+        }
+      },
+      {
+        text: "Cancel",
+        click: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    ]
+  });
+  // Link to open the dialog
+  $( "#add-election-link" ).button().click(function( event ) {
+    $( "#add-election-dialog" ).dialog( "open" );
+    event.preventDefault();
+  });
+});
+</script>
+<div id="add-election-dialog" title="Add New Election">
+  <form method="post" action="#">
+    <div><label>Election Name</label><input class="election" type="text" name="ElectionName" /></div>
+    <div><label>Election Date</label><input class="election datepick" type="text" name="ElectionDate" /></div>
+    <div><label>Registration Deadline</label><input class="election datepick" type="text" name="RegistrationEndDate" /></div>
+    <div><label>Early Vote Start Date</label><input class="election datepick" type="text" name="EVStartDate" /></div>
+    <div><label>Early Vote Deadline</label><input class="election datepick"type="text" name="EVEndDate" /></div>
+    <div><label>Absentee Start Date</label><input class="election datepick" type="text" name="ABStartDate"/></div>
+    <div><label>Absentee Deadline</label><input class="election datepick" type="text" name="ABEndDate"/></div>
+    <div><label>Absentee Email</label><input class="election" type="text" name="ABEmailAddress"/></div>
+    <div><label>Absentee PDF</label><input class="election" type="text" name="ABRequestPDFPath"/></div>
+  </form>
+</div>

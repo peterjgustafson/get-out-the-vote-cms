@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="/stylesheets/application.css" type="text/css" rel="stylesheet" />
+    <link href="/stylesheets/vader/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="/scripts/noty/packaged/jquery.noty.packaged.min.js"></script>
+    <script src="/scripts/jquery-ui.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="/scripts/main.js"></script>
+    
+    {{> message}}
+    
+    <script>
+//      $(function(){
+//        $(".datepick").each(function() {
+//          $(this).datepicker();
+//        });
+//        $("button, .link-button").button();
+//      });
+    </script>
+    
+  </head>
+  <body>
+    <div id="container" class="grid">
+      <div id="menu" class="unit one-quarter">
+        <div class="grid hide-on-mobiles">
+          <div class="unit whole">
+            <div class="menu-item">
+              <a href="/"><img src="/images/gotv_logo_circle.png" /></a>
+            </div>
+            <div class="menu-item">
+              {{#if clients}}
+              <ul>
+                <li><a href="/">States</a></li>
+              </ul>
+              {{else}}
+              {{#if client}}
+              <ul>
+                <li><a href="/">States</a></li>
+              </ul>
+              {{else}}
+              <div>Geography</div>
+              <ul>
+                {{#if stateId}}
+                <li><a href="/{{stateId}}">State Details</a></li>
+                <li><a href="/{{stateId}}/counties">County Mailing Addresses</a></li>
+                {{#if countyId}}
+                <li><a href="/{{stateId}}/county/{{countyId}}">Municipality Mailing Addresses</a></li>
+                {{/if}}
+                {{/if}}
+              </ul>
+              {{/if}}
+              {{/if}}
+            </div>
+            {{#if stateId}}
+            <div class="menu-item">
+              <div>GOTV</div>
+              <ul>
+                <li><a href="/{{stateId}}/locations">Early Vote Locations</a></li>
+                <li><a href="/{{stateId}}/elections">Elections</a></li>
+              </ul>
+            </div>
+            {{/if}}
+            <div class="menu-item">
+              <ul>
+                <li><a href="/clients">Clients</a></li>
+              </ul>
+            </div>
+            <div class="menu-item">
+              <ul>
+                <li><a href="/logout">Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="grid show-on-mobiles">
+          <ul>
+            <li><a href="/">states</a></li>
+            {{#if stateId}}<li><a href="/{{stateId}}/elections">elections</a></li>{{/if}}
+          </ul>
+        </div>
+      </div>
+      <div id="content" class="unit three-quarters">
+        {{{content}}}
+      </div><!-- end content div -->  
+    </div><!-- end container div -->
+  </body>
+</html>

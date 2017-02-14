@@ -1,0 +1,20 @@
+<div class="grid">
+  <div class="unit whole">
+    <div class="grid">
+      <div class="content-header unit whole">
+        <div class="grid">
+          <div class="unit four-fifths"><div class="title">Bulk location upload</div></div>
+          <div class="unit one-fifth"><div style="padding-top:40px"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="grid">
+  <div class="unit whole">
+    <form method="post" action="/{{stateId}}/locations/upload" enctype="multipart/form-data">
+      <label>Locations CSV: </label><input type="file" name="locations" /><br /><br />
+      <button type="submit">Process</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="grid locations">
+  <div class="unit whole">
+    <div class="grid">
+      <div class="content-header unit whole">
+        <div class="grid">
+          <div class="unit three-fifths"><div class="title">Locations</div></div>
+          <div class="unit one-fifth"><div style="padding-top:40px"><a href="/{{stateId}}/locations/upload" class="link-button">bulk upload</a></div></div>
+          <div class="unit one-fifth"><div style="padding-top:40px"><a href="/{{stateId}}/location" class="link-button">+ location</a></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="unit whole">
+        {{#if locations}}
+        <table>
+          <thead>
+            <th>State</th>
+            <th>County</th>
+            <th>Location</th>
+            <th>Manage</th>
+          </thead>
+          <tbody>
+        {{#each locations}}
+            <tr>
+              <td>{{State}}</td>
+              <td>{{County}}</td>
+              <td>{{clean LocationName}}</td>
+              <td>
+                <a href="/{{State}}/location/{{LocationId}}">edit</a>&nbsp;
+                <a href="/{{State}}/location/{{LocationId}}" class="delete" data-location="{{LocationId}}" data-locationname="{{LocationName}}">delete</a>
+              </td>
+            </tr>
+        {{/each}}
+          </tbody>
+        </table>
+        {{else}}
+        <h5>No locations for this state</h5>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$(function(){
+  $(".delete").click(function(event){
+    event.preventDefault();
+    var l = $(this).data("location"),
+            locationName = $(this).data("locationname"),
+        url = "/{{stateId}}/location/"+l;
+
+      var doDelete = confirm("Are you sure you want to delete the location:\n" + locationName);
+      if (doDelete == true) {
+          $.ajax({
+              url:url,
+              method:"delete",
+              success: function () {
+                  window.location.reload();
+              },
+              error: function () {
+                  window.location.reload();
+              }
+          });
+      }
+  });
+});
+</script>

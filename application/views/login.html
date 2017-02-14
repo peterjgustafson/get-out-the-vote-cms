@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      form {
+        width: 300px;
+        height: 100px;
+        margin: 100px auto;
+        padding: 25px;
+        background: #dfdfdf;
+        border-radius: 8px;
+        border: 1px solid #cfcfcf;
+      }
+      form div {
+        margin: 10px;
+      }
+      label {
+        font-size: 12px;
+        padding-right: 6px;
+      }
+      input {
+        width: 200px;
+        padding: 4px 6px;
+      }
+      button {
+        float: right;
+        color: #fff;
+        border: solid 1px #777;
+        border-radius: 4px;
+        background: #959595;
+        cursor: pointer;
+        padding: 10px;
+        min-width: 100px
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post" action="/login">
+      <div><label>username:</label><input type="text" name="username" /></div>
+      <div><label>password:</label><input type="password" name="password" /></div>
+      <button type="submit">login</button>
+    </form>
+  </body>
+</html>

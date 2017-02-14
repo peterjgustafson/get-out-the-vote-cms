@@ -1,0 +1,104 @@
+<div class="grid new-election">
+  <div class="unit whole">
+    <div class="grid">
+      <div class="content-header unit whole">
+        <div class="grid">
+          <div class="unit four-fifths"><div class="title">New {{stateId}} Election</div></div>
+          <div class="unit one-fifth"></div>
+        </div>
+      </div>
+    </div>
+    <form method="post" action="/{{stateId}}/election">
+      <div class="grid">
+        <div class="unit whole form-section">
+          <div class="grid">
+            <div class="unit three-quarters">
+              <label>Election Name</label><br />
+              <input class="election-input" type="text" name="ElectionName" />
+            </div>
+            <div class="unit one-quarter">
+              <label>State</label><br />
+              <select class="election-input" name="State"><option>{{stateId}}</option></select>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit one-third">
+              <label>Election Date</label><br />
+              <input class="election-input datepick" type="text" name="ElectionDate" />
+            </div>
+            <div class="unit one-third">
+              <label>Registration Deadline</label><br />
+              <input class="election-input datepick" type="text" name="RegistrationEndDate" />
+            </div>
+            <div class="unit one-third"></div>
+          </div>
+          <div class="grid">
+            <div class="unit one-third">
+              <label>Election Day Start</label><br />
+              <input class="election-input datepick" type="text" name="EDStartDate" />
+            </div>
+            <div class="unit one-third">
+              <label>Election Day End</label><br />
+              <input class="election-input datepick" type="text" name="EDEndDate" />
+            </div>
+            <div class="unit one-third">
+              <label>Use Google Civic?</label>
+              <input type="checkbox" name="EDUseGoogleCivic" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="unit whole form-section">
+          <label>Early Voting</label><br />
+          <div class="grid">
+            <div class="unit one-third">
+              <label>Start Date</label><br />
+              <input class="election-input datepick" type="text" name="EVStartDate" />
+            </div>
+            <div class="unit one-third">
+              <label>End Date</label><br />
+              <input class="election-input datepick"type="text" name="EVEndDate" />
+            </div>
+            <div class="unit one-third">
+              <label>Early Voting End Display Date</label><br />
+              <input class="election-input datepick" type="text" name="EVEndDisplayDate" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="unit whole form-section">
+          <label>Absentee Voting</label><br />
+          <div class="grid">
+            <div class="unit one-third">
+              <label>Absentee Start Date</label><br />
+              <input class="election-input datepick" type="text" name="ABStartDate"/>
+            </div>
+            <div class="unit one-third">
+              <label>Absentee Deadline</label><br />
+              <input class="election-input datepick" type="text"  name="ABEndDate"/>
+            </div>
+            <div class="unit one-third">
+              <label>Absentee End Display Date</label><br />
+              <input class="election-input datepick" type="text" name="ABEndDisplayDate" />
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit half">
+              <label>Absentee Email</label><br />
+              <input class="election-input" type="text" name="ABEmailAddress"/>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="unit half">
+              <label>Absentee PDF</label>
+              <input class="election-input" type="text" name="ABRequestPDFPath"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div><button type="submit">Save</button></div>
+    </form>
+  </div>
+</div>
